@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React, { useState } from 'react';
 import './GameBoard.css';
+import Cell from './components/Cell';
 
 const board = [["0", "1", "2"],
 ["3", "4", "5"],
@@ -26,11 +26,6 @@ const GameBoard = () => {
                 }
             }
 
-            
-            setHistory(historyHelper);
-
-            console.log(history);
-            
             if (currentSign === "X") {
                 setCurrentSign("O");
             }
@@ -45,7 +40,6 @@ const GameBoard = () => {
     function getWinner() {
         // check row
         if ((board[0][0] === board[0][1]) && (board[0][0] === board[0][2])) {
-            console.log("win");
             return (
                 <div className="winner">{`The winner is ${board[0][0]}`}</div>
             );
@@ -109,18 +103,9 @@ const GameBoard = () => {
             </>
         )
 
-
-        historyHelper.push(state);
-
-        // for(let i =0; i <state.props.children.length; i++) {
-        //     console.log(state.props.children[i]);
-        // }
-
-        console.log(historyHelper);
         return state;
+        
     }
-
-
 
     return (
         <div className="container">
